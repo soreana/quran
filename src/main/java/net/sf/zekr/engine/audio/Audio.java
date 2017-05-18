@@ -38,7 +38,7 @@ public class Audio implements ResourceManager {
       audioList.put(ad.id, ad);
    }
 
-   public AudioData get(String audioId) {
+   public AudioData get(Object audioId) {
       return (AudioData) audioList.get(audioId);
    }
 

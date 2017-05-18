@@ -88,13 +88,13 @@ public class SearchScope {
       return false;
    }
 
-   public static SearchScope parse(List<String> searchScopeItemList) {
+   public static SearchScope parse(List<Object> searchScopeItemList) {
       SearchScope ss = new SearchScope();
       if (CollectionUtils.isEmpty(searchScopeItemList)) {
          return ss;
       }
-      for (String ssiStr : searchScopeItemList) {
-         SearchScopeItem ssi = SearchScopeItem.parse(ssiStr);
+      for (Object ssiStr : searchScopeItemList) {
+         SearchScopeItem ssi = SearchScopeItem.parse((String) ssiStr);
          ss.add(ssi);
       }
 

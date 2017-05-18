@@ -253,9 +253,9 @@ public class ApplicationConfig implements ConfigNaming {
 
          searchInfo = new SearchInfo();
          Configuration stopWordConf = searchProps.subset("search.stopword");
-         List<String> defaultStopWord = searchProps.getList("search.stopword");
+         List<Object> defaultStopWord = searchProps.getList("search.stopword");
          Configuration replacePatternConf = searchProps.subset("search.pattern.replace");
-         List<String> defaultReplacePattern = searchProps.getList("search.pattern.replace");
+         List<Object> defaultReplacePattern = searchProps.getList("search.pattern.replace");
          Configuration punctuationConf = searchProps.subset("search.pattern.punct");
          String defaultPunctuation = searchProps.getString("search.pattern.punct");
          Configuration diacriticsConf = searchProps.subset("search.pattern.diacr");
@@ -725,9 +725,9 @@ public class ApplicationConfig implements ConfigNaming {
          // load custom translation list
          logger.info("Load custom translation list.");
          List<TranslationData> customList = translation.getCustomGroup();
-         List<String> customs = props.getList("trans.custom");
+         List<Object> customs = props.getList("trans.custom");
          for (int i = 0; i < customs.size(); i++) {
-            String tid = customs.get(i);
+            String tid = (String) customs.get(i);
             if (tid == null || "".equals(tid.trim())) {
                logger.info("No custom translation list to load.");
                continue;
@@ -890,8 +890,8 @@ public class ApplicationConfig implements ConfigNaming {
 
    @SuppressWarnings("unchecked")
    private void extractAudioProps() {
-      String def = props.getString("audio.default");
-      List<String> selectedList = props.getList("audio.default");
+      Object def = props.getString("audio.default");
+      List<Object> selectedList = props.getList("audio.default");
       if (org.apache.commons.collections.CollectionUtils.isNotEmpty(selectedList) && selectedList.size() > 1) {
          def = selectedList.get(0);
       }
@@ -959,7 +959,7 @@ public class ApplicationConfig implements ConfigNaming {
       // load if list of default audio data
       if (audio.getCurrent() != null) {
          // audio.getCurrentList().add(audio.getCurrent());
-         for (String audioId : selectedList) {
+         for (Object audioId : selectedList) {
             AudioData ad = audio.get(audioId);
             if (ad != null) {
                audio.getCurrentList().add(ad);

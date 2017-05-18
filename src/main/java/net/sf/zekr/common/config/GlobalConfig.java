@@ -115,7 +115,7 @@ public class GlobalConfig {
 	static {
 		PropertyResourceBundle prb = null;
 		try {
-			InputStream is = GlobalConfig.class.getResourceAsStream("version.properties");
+			InputStream is = GlobalConfig.class.getClassLoader().getResourceAsStream("version.properties");
 			prb = new PropertyResourceBundle(is);
 		} catch (IOException e) {
 			e.printStackTrace();

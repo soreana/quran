@@ -58,7 +58,7 @@ public class Translation implements ResourceManager{
 		this.defaultTrans = defaultTrans;
 	}
 
-	public TranslationData get(String transId) {
+	public TranslationData get(Object transId) {
 		return translations.get(transId);
 	}
 

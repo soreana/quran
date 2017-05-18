@@ -589,7 +589,7 @@ public class QuranForm extends BaseForm {
 
       if (isSashed) {
          if (config.getProps().getProperty("view.quranForm.paneSashWeight") != null) {
-            List<String> weights = config.getProps().getList("view.quranForm.paneSashWeight");
+            List<Object> weights = config.getProps().getList("view.quranForm.paneSashWeight");
             navSashForm.setWeights(new int[] { Integer.parseInt(weights.get(0).toString()),
                   Integer.parseInt(weights.get(1).toString()) });
          } else {
@@ -1970,7 +1970,7 @@ public class QuranForm extends BaseForm {
             sashForm.setWeights(new int[] { 1, 1 });
          }
          if (viewLayout == 0) { // Application just started up
-            List<String> weights = config.getProps().getList("view.quranForm.layoutSashWeight");
+            List<Object> weights = config.getProps().getList("view.quranForm.layoutSashWeight");
             if (weights.size() != 0) {
                sashForm.setWeights(new int[] { Integer.parseInt(weights.get(0).toString()),
                      Integer.parseInt(weights.get(1).toString()) });
@@ -2190,7 +2190,7 @@ public class QuranForm extends BaseForm {
 
       String v = config.getProps().getString("view.search.scope", null);
       if (StringUtils.isNotEmpty(v)) {
-         List<String> scope = config.getProps().getList("view.search.scope");
+         List<Object> scope = config.getProps().getList("view.search.scope");
          if (CollectionUtils.isNotEmpty(scope)) {
             setSearchScope(SearchScope.parse(scope));
          }

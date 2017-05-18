@@ -54,15 +54,15 @@ public class SearchInfo {
 	private Pattern defaultPunctuation;
 	private Pattern defaultDiactitic;
 
-	public void addReplacePattern(String langCode, List<String> replacePatternList) {
+	public void addReplacePattern(String langCode, List<Object> replacePatternList) {
 		Map<Pattern, String> patterns = addReplacePatterns(replacePatternList);
 		replacePatternMap.put(langCode, patterns);
 	}
 
-	private Map<Pattern, String> addReplacePatterns(List<String> replacePatternList) {
+	private Map<Pattern, String> addReplacePatterns(List<Object> replacePatternList) {
 		Map<Pattern, String> patterns = new LinkedHashMap<Pattern, String>();
 		for (int i = 0; i < replacePatternList.size(); i++) {
-			String p = replacePatternList.get(i);
+			String p = (String) replacePatternList.get(i);
 			String[] patternsArray = p.split("=");
 			if (patternsArray.length >= 1) {
 				try {
@@ -78,8 +78,8 @@ public class SearchInfo {
 		return patterns;
 	}
 
-	public void addStopWord(String langCode, List<String> stopWordList) {
-		Set<String> stopWordSet = new LinkedHashSet<String>(stopWordList);
+	public void addStopWord(String langCode, List<Object> stopWordList) {
+		Set<String> stopWordSet = new LinkedHashSet<String>((List<String>)(Object)stopWordList);
 		stopWordMap.put(langCode, stopWordSet);
 	}
 
@@ -103,11 +103,11 @@ public class SearchInfo {
 		this.defaultPunctuation = defaultPunctuation;
 	}
 
-	public void setDefaultStopWord(List<String> defaultStopWord) {
-		defaultStopWordSet = new LinkedHashSet<String>(defaultStopWord);
+	public void setDefaultStopWord(List<Object> defaultStopWord) {
+		defaultStopWordSet = new LinkedHashSet<String>((List<String>)(Object)defaultStopWord);
 	}
 
-	public void setDefaultReplacePattern(List<String> defaultReplacePattern) {
+	public void setDefaultReplacePattern(List<Object> defaultReplacePattern) {
 		defaultReplacePatternMap = addReplacePatterns(defaultReplacePattern);
 	}
 
