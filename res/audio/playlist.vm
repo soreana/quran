@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<playlist version="1" xmlns="http://xspf.org/ns/0/">
+	<title>Zekr Playlist: ${AUDIO_DATA.Reciter}</title>
+	<info>http://zekr.org</info>
+	<creator>${AUDIO_DATA.Reciter}</creator>
+	<creator>${AUDIO_DATA.License}</creator>
+	<trackList>
+		#foreach ($TRACK in $TRACK_LIST)<track>
+			<title>$TRACK.Location.SuraName ($TRACK.Location.Sura) - $TRACK.Location.Aya</title>
+			<location>$TRACK.Url</location>
+		</track>#end
+#*		#foreach ($SPECIAL_ITEM in $SPECIAL_ITEM_LIST)<track>
+			<location>$SPECIAL_ITEM</location>
+		</track>#end  *#
+	</trackList>
+</playlist>
