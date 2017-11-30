@@ -32,7 +32,7 @@ public class ZekrMain {
 	/**
 	 * Will start the Zekr platform
 	 */
-	static void startZekr() {
+	private static void startZekr() {
 		Logger logger = Logger.getLogger(ZekrMain.class);
 
 		Date date1 = new Date();
@@ -62,28 +62,18 @@ public class ZekrMain {
 				try {
 					quranForm.loopEver();
 				} catch (Throwable th) {
-					if (logger != null) {
-						logger.log(th);
-					} else {
-						th.printStackTrace();
-					}
+					logger.log(th);
 				}
 			}
 		} catch (Throwable t) {
-			if (logger != null) {
-				logger.log(t);
-			} else {
-				t.printStackTrace();
-			}
+			logger.log(t);
 		} finally {
-			if (display != null && !display.isDisposed()) {
+			if (!display.isDisposed()) {
 				display.dispose();
 			}
-			if (logger != null) {
-				logger.memInfo();
-				logger.info("Zekr is now down.\n");
-			}
-			
+			logger.memInfo();
+			logger.info("Zekr is now down.\n");
+
 			// fix for OS X + Java 6 hanging on exit, suggested by Ali Rastegar
 			System.exit(0);
 		}
